@@ -1,0 +1,44 @@
+# OpenClaw 技能市場發布忽略文件
+
+# Python 緩存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日誌
+*.log
+
+# 備份
+*.bak
+*.backup
+*_backup.*
+
+# 臨時文件
+*.tmp
+*.temp
+
+# 測試
+tests/
+test_*.py
+*_test.py
+
+# 文檔（可選）
+docs/
+*.md
+!README.md
+!SKILL.md
+
+# Git
+.git/
+.gitignore
+
+# 其他
+.DS_Store
+Thumbs.db

@@ -1,0 +1,51 @@
+{
+  "version": "2.4",
+  "description": "横道图样式 - 参考VBA线条风格（内细外粗，周末浅灰）",
+  "last_updated": "2026-05-12",
+
+  "column_widths": {
+    "A": 5.0,
+    "B": 30.0,
+    "C": 10.0,
+    "D": 6.0,
+    "E": 10.0
+  },
+
+  "row_heights": {
+    "title_row": 36,
+    "info_row": 20,
+    "header_row": 30,
+    "task_row": null,
+    "scale_year": 22,
+    "scale_month": 22,
+    "scale_week": 18,
+    "scale_day": 18,
+    "scale_weekday": 18
+  },
+
+  "fonts": {
+    "default_name": "微軟正黑體",
+    "sizes": {
+      "title": 16,
+      "header": 12,
+      "task": 11,
+      "scale": 10
+    }
+  },
+
+  "borders": {
+    "grid_color_ref": "GRID",
+    "grid_color_bold_ref": "GRID_BOLD",
+    "regular_border_style": "thin",
+    "bold_border_style": "medium",
+    "today_line_color_ref": "TODAY_LINE",
+    "today_line_style": "medium",
+    "header_bottom_border_style": "medium"
+  },
+
+  "misc": {
+    "freeze_panes": "F7",
+    "print_title_rows": "1:6",
+    "gantt_width_cm": 34.0
+  }
+}
