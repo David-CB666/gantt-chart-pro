@@ -130,10 +130,8 @@ MIT License
 
 ## 作者
 
-**David-CB666 (Mike)**
+**David-CB666**
 澳門機電工程項目經理
-
-📧 QQ: david_michael@qq.com
 
 ---
 
