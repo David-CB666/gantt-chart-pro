@@ -244,7 +244,7 @@
     "auto_open": false,
     "export_pdf": false,
     "pdf_engine": "libreoffice",
-    "default_project_name": "慈幼中學校舍修葺工程",
+    "default_project_name": "示例工程",
     "backup_enabled": true,
     "backup_count": 5,
     "version_suffix": "v13.2"
