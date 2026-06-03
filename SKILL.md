@@ -195,7 +195,7 @@ MIT License
 
 ## 作者
 
-David-CB666 — 澳門機電工程項目經理
+David-CB666
 
 ## 版本歷史
 
