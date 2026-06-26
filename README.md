@@ -1,140 +1,109 @@
-# GanttChart Pro — Excel 橫道圖生成器
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8%2B-blue?logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey" alt="Platform">
+</p>
 
-[![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-blue)](https://clawd.org.cn/skills/david-cb666/gantt-chart-pro)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-green)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+# GanttChart Pro
 
-> **無需 MS Project，純 Python + openpyxl 生成專業甘特圖 Excel**
+> **Professional Gantt charts in Excel — no MS Project required.**
 
----
-
-## 為什麼選擇 GanttChart Pro？
-
-✅ **零成本** — 無需購買 MS Project 許可證
-✅ **輕量級** — 僅依賴 openpyxl，安裝簡單
-✅ **專業輸出** — 多配色方案、WBS 分組、里程碑標記
-✅ **靈活配置** — JSON 配置文件，支持自定義樣式
-✅ **跨平台** — Windows/macOS/Linux 均可運行
+Generate beautiful, print-ready construction schedules with pure Python + openpyxl.
 
 ---
 
-## 快速開始
+## 🎯 Why GanttChart Pro?
 
-### 安裝依賴
+| | MS Project | GanttChart Pro |
+|---|---|---|
+| **Cost** | $$$ license | Free (MIT) |
+| **Setup** | Complex install | `pip install openpyxl` |
+| **Sharing** | .mpp files only | .xlsx (anyone can open) |
+| **Automation** | COM hack | Native Python API |
+| **Cross-platform** | Windows only | Windows / macOS / Linux |
+
+---
+
+## 🚀 Quick Start
 
 ```bash
+git clone https://github.com/David-CB666/gantt-chart-pro.git
+cd gantt-chart-pro
 pip install openpyxl
 ```
 
-### 準備數據
-
-創建 `EDF.xlsx`，必需列：
-- **施工內容** — 任務名稱
-- **開始日期** — YYYY-MM-DD 格式
-
-可選列：序號、工期、完成日期、前置任務
-
-### 生成甘特圖
+### Generate a Chart (one command)
 
 ```bash
-python scripts/gantt_chart_pro.py --input EDF.xlsx --output schedule.xlsx
+python scripts/gantt_chart_pro.py --input examples/EDF.xlsx --output schedule.xlsx --scheme blue_pro
 ```
 
-### 查看結果
+### From Python
 
-打開 `schedule.xlsx`，包含：
-- 標題區（工程名稱、承建商、施工期間）
-- 任務表（序號、施工內容、開始、天數、完成）
-- 甘特圖（彩色橫道 + 時間刻度 + 周末高亮）
+```python
+from scripts.gantt_chart_pro import GanttGenerator
 
----
-
-## 功能特性
-
-### 🎨 三種專業配色
-
-| 方案 | 適用場景 |
-|------|----------|
-| 專業藍調 | 工程報告、正式文件 |
-| 自然舒緩綠 | 環保項目、園林工程 |
-| 灰白極簡 | 打印輸出、黑白複印 |
-
-### 📅 雙日曆模式
-
-- **日曆天** — 包含周末與節假日
-- **工作天** — 僅計算工作日，周末灰顯
-
-### 📊 WBS 自動分組
-
-根據任務編號自動推斷層級：
-- `A`, `B`, `C` → 一級（階段）
-- `A1`, `A2` → 二級（工序）
-- `A1.1`, `A1.2` → 三級（細項）
-
-### ⚙️ 前置關係支持
-
-FS/SS/FF/SF 四種關係，支持延隔天數
-
----
-
-## 配置文件
-
-### config_v2.json
-
-```json
-{
-  "active_scheme": "blue_pro",
-  "calendar": {
-    "type": "workdays",
-    "holidays": ["2026-05-01", "2026-12-20"]
-  }
-}
-```
-
-### gantt_styles.json
-
-```json
-{
-  "column_widths": { "A": 5.0, "B": 30.0 },
-  "fonts": { "default_name": "微軟正黑體" }
-}
+gen = GanttGenerator(
+    input_file="examples/EDF.xlsx",
+    output_file="schedule.xlsx",
+    color_scheme="blue_pro",
+    calendar_mode="calendar_days"
+)
+gen.generate()
 ```
 
 ---
 
-## 與 MS Project 的區別
+## 📊 Features
 
-| 特性 | GanttChart Pro | MS Project |
-|------|----------------|------------|
-| 成本 | 免費 | 需購買許可 |
-| 依賴 | openpyxl | MS Office |
-| 功能 | 甘特圖生成 | 完整項目管理 |
-| 學習曲線 | 簡單 | 複雜 |
-
----
-
-## 適用場景
-
-✅ 快速生成施工進度表
-✅ 無 MS Project 許可證
-✅ 批量生成多個甘特圖
-✅ 自動化腳本集成
+- 🗓️ **Dual calendar modes** — calendar days or working days
+- 🎨 **Multiple color schemes** — blue_pro, green_calm, gray_minimal
+- 📊 **WBS auto-grouping** — task codes define hierarchy (A=Level 1, A1=Level 2)
+- 🚩 **Milestone markers** — auto-detected or manual
+- 📏 **Weekend highlight** — gray background for non-working days
+- 🔴 **Today line** — red vertical line at current date
+- 🔗 **Dependency arrows** — FS/SS/FF/SF relationships
+- 📐 **Three-level timescale** — year / month / day
+- 🖨️ **Print-ready** — landscape, auto-fit, repeating headers
 
 ---
 
-## 授權
+## 📋 EDF Data Format
 
-MIT License
+Prepare an Excel file with these columns:
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| **Task ID** | Recommended | A, A1, A2... (auto-infers hierarchy) |
+| **Task Name** | Yes | Description |
+| **Start Date** | Yes | YYYY-MM-DD |
+| **Duration** | No | Days (default: 1) |
+| **End Date** | No | Auto-calculated |
+| **Predecessor** | No | e.g. "A1FS" or "A1" |
+
+See [`examples/EDF.xlsx`](examples/EDF.xlsx) for a working example.
 
 ---
 
-## 作者
+## 🎨 Color Schemes
 
-**David-CB666**
+| Scheme | Vibe | Best For |
+|--------|------|----------|
+| `blue_pro` | Professional navy | Client presentations |
+| `green_calm` | Soft green | Internal planning |
+| `gray_minimal` | Clean grayscale | Print/black & white |
+
+Full customization: [`gantt_styles.json`](gantt_styles.json)
 
 ---
 
-## 版本歷史
+## 📖 Documentation
 
-- **v1.0.0** (2026-06-02) — OpenClaw 技能包初始版本
-- **v15.0** (2026-05-12) — 原始 Python 版本
+- **Configuration Guide**: [`references/config-guide.md`](references/config-guide.md)
+- **Color Scheme Reference**: [`references/color-schemes.md`](references/color-schemes.md)
+
+---
+
+## 📄 License
+
+MIT © [David-CB666](https://github.com/David-CB666)
