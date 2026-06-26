@@ -8,6 +8,10 @@
 
 > **Professional Gantt charts in Excel — no MS Project required.**
 
+<p align="center">
+  <img src="demo/demo_preview.png" alt="GanttChart Pro Demo" width="800">
+</p>
+
 Generate beautiful, print-ready construction schedules with pure Python + openpyxl.
 
 ---
