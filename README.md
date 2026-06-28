@@ -8,11 +8,11 @@
 
 > **Professional Gantt charts in Excel — no MS Project required.**
 
+Generate beautiful, print-ready construction schedules with pure Python + openpyxl. Dual calendar modes, WBS auto-grouping, milestone markers, dependency arrows, and three-level timescale — everything you'd expect from MS Project, without the license or complexity.
+
 <p align="center">
   <img src="demo/demo_preview.png" alt="GanttChart Pro Demo" width="800">
 </p>
-
-Generate beautiful, print-ready construction schedules with pure Python + openpyxl.
 
 ---
 
@@ -101,10 +101,32 @@ Full customization: [`gantt_styles.json`](gantt_styles.json)
 
 ---
 
+## 📊 Real-World Impact
+
+> *"以前出甘特圖要用 MS Project，授權貴、同事開唔到 .mpp。而家 Excel 一開就得，業主、顧問、判頭全部睇到。改圖仲快過 MSP 10 倍。"* — Mike, MEP Project Manager
+
+---
+
+## 🇭🇰 中文簡介
+
+純 Python + Excel 甘特圖生成器。支援雙日曆模式、WBS 任務自動分組、里程碑標記、前置任務箭嘴、三層時間軸。唔洗 MS Project，出到專業施工進度圖。
+
+---
+
 ## 📖 Documentation
 
 - **Configuration Guide**: [`references/config-guide.md`](references/config-guide.md)
 - **Color Scheme Reference**: [`references/color-schemes.md`](references/color-schemes.md)
+
+---
+
+## 🔗 My Other Tools
+
+| Tool | Description |
+|------|-------------|
+| [**Excel Template Filler**](https://github.com/David-CB666/excel-template-filler) | Dual-engine batch template filling — images & print settings preserved |
+| [**VBA Macro Reader**](https://github.com/David-CB666/VBA-Macro-Reader-v2.0.0) | Read, modify & execute VBA macros from .xlsm files |
+| [**Material Submittal Generator**](https://github.com/David-CB666/material-submittal-generator) | One-click batch submittals + auto BQ page merging |
 
 ---
 
