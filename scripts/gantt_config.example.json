@@ -1,0 +1,197 @@
+{
+  "project": {
+    "name": "示例校舍翻新工程",
+    "subtitle": "施工進度橫道圖",
+    "project_id": "SC26-EXAMPLE",
+    "contractor": "示例承建商",
+    "start_date": "2026-07-27",
+    "end_date": "2026-09-15",
+    "num_days": 51,
+    "today": "2026-08-05"
+  },
+  "sections": [
+    {
+      "title": "A 開工準備",
+      "tasks": [
+        {
+          "id": 1,
+          "name": "工地圍封及安全設施",
+          "duration": 5,
+          "start_day": 0,
+          "deps": [],
+          "category": "A"
+        },
+        {
+          "id": 2,
+          "name": "材料確認及訂貨",
+          "duration": 4,
+          "start_day": 5,
+          "deps": [
+            1
+          ],
+          "category": "A"
+        }
+      ]
+    },
+    {
+      "title": "B 拆卸及基層處理",
+      "tasks": [
+        {
+          "id": 3,
+          "name": "舊飾面拆卸",
+          "duration": 6,
+          "start_day": 9,
+          "deps": [
+            2
+          ],
+          "category": "B"
+        },
+        {
+          "id": 4,
+          "name": "基層處理",
+          "duration": 5,
+          "start_day": 15,
+          "deps": [
+            3
+          ],
+          "category": "B"
+        }
+      ]
+    },
+    {
+      "title": "C 裝修主體施工",
+      "tasks": [
+        {
+          "id": 5,
+          "name": "天花工程",
+          "duration": 7,
+          "start_day": 20,
+          "deps": [
+            4
+          ],
+          "category": "C"
+        },
+        {
+          "id": 6,
+          "name": "牆身工程",
+          "duration": 7,
+          "start_day": 20,
+          "deps": [
+            4
+          ],
+          "category": "C"
+        },
+        {
+          "id": 7,
+          "name": "地台工程",
+          "duration": 6,
+          "start_day": 27,
+          "deps": [
+            5,
+            6
+          ],
+          "category": "C"
+        }
+      ]
+    },
+    {
+      "title": "D 電氣及 AV 設備",
+      "tasks": [
+        {
+          "id": 8,
+          "name": "配線及照明",
+          "duration": 8,
+          "start_day": 33,
+          "deps": [
+            7
+          ],
+          "category": "D"
+        },
+        {
+          "id": 9,
+          "name": "AV 設備安裝",
+          "duration": 4,
+          "start_day": 41,
+          "deps": [
+            8
+          ],
+          "category": "D"
+        }
+      ]
+    },
+    {
+      "title": "E 安裝及收尾工程",
+      "tasks": [
+        {
+          "id": 10,
+          "name": "家具安裝",
+          "duration": 3,
+          "start_day": 45,
+          "deps": [
+            9
+          ],
+          "category": "E"
+        },
+        {
+          "id": 11,
+          "name": "除醛及清潔",
+          "duration": 2,
+          "start_day": 48,
+          "deps": [
+            10
+          ],
+          "category": "E"
+        },
+        {
+          "id": 12,
+          "name": "驗收移交",
+          "duration": 1,
+          "start_day": 50,
+          "deps": [
+            11
+          ],
+          "category": "E",
+          "milestone": true
+        }
+      ]
+    }
+  ],
+  "critical_path": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "legend": [
+    {
+      "color": "2E86AB",
+      "label": "開工準備"
+    },
+    {
+      "color": "81C784",
+      "label": "拆卸及基層"
+    },
+    {
+      "color": "FFD54F",
+      "label": "裝修主體"
+    },
+    {
+      "color": "E57373",
+      "label": "電氣及 AV"
+    },
+    {
+      "color": "9575CD",
+      "label": "安裝及收尾"
+    }
+  ],
+  "notes": [
+    "關鍵路徑為最長依賴鏈，決定總工期。"
+  ]
+}

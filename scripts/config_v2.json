@@ -4,16 +4,70 @@
   "description": "甘特图生成器完整配置 - 参考VBA配色优化（柔和多彩，周末浅灰）",
   "last_updated": "2026-05-12",
   "active_scheme": "blue_pro",
-
   "validation": {
     "color_format": "hex",
-    "required_fields": ["name", "start"],
+    "required_fields": [
+      "name",
+      "start"
+    ],
     "date_range_limit": 730,
     "max_tasks": 200,
     "min_duration": 1,
     "max_duration": 90
   },
-
+  "granularity": {
+    "auto": true,
+    "mode": "auto",
+    "thresholds": {
+      "day_max": 120,
+      "week_max": 450
+    },
+    "column_width": {
+      "day": 4.5,
+      "week": 3.0,
+      "month": 2.0,
+      "week_grouped": 4.5,
+      "compressed": 6.0
+    },
+    "label_format": {
+      "day": "d",
+      "week": "W{week}",
+      "month": "m",
+      "week_grouped": "d",
+      "compressed": "range"
+    },
+    "days_per_col": 7,
+    "days_per_col_auto": true,
+    "modes": [
+      "auto",
+      "day",
+      "week_grouped",
+      "week",
+      "compressed",
+      "month"
+    ],
+    "recommend": {
+      "panel_widths": {
+        "A4_landscape": 120.0,
+        "A3_landscape": 180.0
+      },
+      "target_panel_width": 180.0,
+      "max_readable_days_per_col": 30,
+      "nice_steps": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        10,
+        14,
+        21,
+        30
+      ],
+      "target_col_width": 3.0
+    },
+    "manual": "auto"
+  },
   "performance": {
     "max_tasks_render": 100,
     "chunk_render_size": 50,
@@ -21,7 +75,6 @@
     "preview_mode": false,
     "auto_optimize_columns": true
   },
-
   "schemes": {
     "blue_pro": {
       "name": "专业蓝调",
@@ -120,7 +173,6 @@
       }
     }
   },
-
   "colors": {
     "HEADER_BG": "1E3B4A",
     "HEADER_FG": "FFFFFF",
@@ -140,7 +192,6 @@
     "GRID": "C5D1DF",
     "GRID_BOLD": "1E3B4A"
   },
-
   "stage_colors": {
     "A": "2E86AB",
     "B": "81C784",
@@ -150,72 +201,175 @@
     "F": "64B5F6",
     "G": "BFCF91"
   },
-
   "fields": {
     "seq": {
-      "patterns": ["序號", "項次", "编号", "編號", "項號", "No", "no", "NO", "Num", "#"],
+      "patterns": [
+        "序號",
+        "項次",
+        "编号",
+        "編號",
+        "項號",
+        "No",
+        "no",
+        "NO",
+        "Num",
+        "#"
+      ],
       "type": "string",
       "required": false
     },
     "name": {
-      "patterns": ["施工內容", "施工項目", "項目名稱", "項目", "任務名稱", "任務描述", "工序", "工程內容", "內容", "工作內容", "名稱", "Description"],
+      "patterns": [
+        "施工內容",
+        "施工項目",
+        "項目名稱",
+        "項目",
+        "任務名稱",
+        "任務描述",
+        "工序",
+        "工程內容",
+        "內容",
+        "工作內容",
+        "名稱",
+        "Description"
+      ],
       "type": "string",
       "required": true
     },
     "start": {
-      "patterns": ["開始日期", "開始時間", "開始", "開工日期", "開工", "动工日期", "Start", "START", "start", "Sd", "SD"],
+      "patterns": [
+        "開始日期",
+        "開始時間",
+        "開始",
+        "開工日期",
+        "開工",
+        "动工日期",
+        "Start",
+        "START",
+        "start",
+        "Sd",
+        "SD"
+      ],
       "type": "date",
       "required": true
     },
     "end": {
-      "patterns": ["完成日期", "完成時間", "完成", "完工日期", "完工", "竣工日期", "End", "END", "end", "Ed", "ED", "結束"],
+      "patterns": [
+        "完成日期",
+        "完成時間",
+        "完成",
+        "完工日期",
+        "完工",
+        "竣工日期",
+        "End",
+        "END",
+        "end",
+        "Ed",
+        "ED",
+        "結束"
+      ],
       "type": "date",
       "required": false
     },
     "duration": {
-      "patterns": ["工期", "持續天數", "持續", "天數", "工作天", "日數", "Duration", "DURATION", "dur", "天"],
+      "patterns": [
+        "工期",
+        "持續天數",
+        "持續",
+        "天數",
+        "工作天",
+        "日數",
+        "Duration",
+        "DURATION",
+        "dur",
+        "天"
+      ],
       "type": "integer",
       "default": 1,
       "required": false
     },
     "predecessor": {
-      "patterns": ["前置任務", "前置", "先行任務", "先決任務", "依賴", "Predecessor", "PRED", "pred", "FS"],
+      "patterns": [
+        "前置任務",
+        "前置",
+        "先行任務",
+        "先決任務",
+        "依賴",
+        "Predecessor",
+        "PRED",
+        "pred",
+        "FS"
+      ],
       "type": "string",
       "required": false
     },
     "material": {
-      "patterns": ["材料訂貨期", "材料订货期", "材料到場", "訂貨期", "材料", "Material", "ORDER"],
+      "patterns": [
+        "材料訂貨期",
+        "材料订货期",
+        "材料到場",
+        "訂貨期",
+        "材料",
+        "Material",
+        "ORDER"
+      ],
       "type": "string",
       "required": false
     },
     "remark": {
-      "patterns": ["備註", "備注", "說明", "Remark", "REMARK", "Note", "備考"],
+      "patterns": [
+        "備註",
+        "備注",
+        "說明",
+        "Remark",
+        "REMARK",
+        "Note",
+        "備考"
+      ],
       "type": "string",
       "required": false
     },
     "category": {
-      "patterns": ["類別", "專業", "category", "type"],
+      "patterns": [
+        "類別",
+        "專業",
+        "category",
+        "type"
+      ],
       "type": "string",
       "default": "default",
       "required": false
     }
   },
-
   "calendar": {
-    "type": "ask_user",
-    "options": ["calendar_days", "workdays"],
+    "type": "calendar_days",
+    "options": [
+      "calendar_days",
+      "workdays"
+    ],
     "option_labels": {
       "calendar_days": "日曆天（包含周末与节假日）",
       "workdays": "工作天（週一至週五，排除假期）"
     },
     "default": "calendar_days",
-    "work_week": [1,2,3,4,5],
-    "holidays": ["2026-05-01", "2026-12-20", "2026-12-21"],
-    "makeup_days": ["2026-05-09"],
+    "work_week": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "holidays": [
+      "2026-05-01",
+      "2026-12-20",
+      "2026-12-21"
+    ],
+    "makeup_days": [
+      "2026-05-09"
+    ],
     "holiday_color": "HOLIDAY_BG",
     "weekend_color": "WEEKEND_BG"
   },
-
   "gantt_layout": {
     "target_columns": 30,
     "min_column_width": 4.0,
@@ -235,21 +389,21 @@
       "end": 10.5,
       "predecessor": 10.5,
       "material": 14
-    }
+    },
+    "week_grouping": true,
+    "gantt_column_width": 4.5
   },
-
   "output": {
     "file_pattern": "{project_name}_甘特图_{calendar_type}_{version}.xlsx",
     "overwrite": false,
     "auto_open": false,
     "export_pdf": false,
     "pdf_engine": "libreoffice",
-    "default_project_name": "示例工程",
+    "default_project_name": "示例工程項目名稱",
     "backup_enabled": true,
     "backup_count": 5,
     "version_suffix": "v13.2"
   },
-
   "data_validation": {
     "min_duration": 1,
     "max_duration": 90,
@@ -260,14 +414,17 @@
     "strict_validation": false,
     "predecessor_format_regex": "^([A-Za-z0-9]+(?:完成)?)(?:[\\+\\-]\\d+)?$"
   },
-
   "dependency": {
     "auto_calculate_critical_path": true,
     "default_lag": 0,
-    "supported_relations": ["FS", "SS", "FF", "SF"],
+    "supported_relations": [
+      "FS",
+      "SS",
+      "FF",
+      "SF"
+    ],
     "critical_path_algorithm": "standard"
   },
-
   "print": {
     "header_left": "&F",
     "header_center": "&D",
@@ -277,12 +434,25 @@
     "footer_right": "Page &P of &N",
     "fit_to_pages_wide": 1,
     "fit_to_pages_tall": 0,
-    "print_gridlines": true,
-    "print_headings": true
+    "print_gridlines": false,
+    "print_headings": false,
+    "horizontally_centered": true,
+    "paper_size": 8,
+    "margins": {
+      "top": 0.91,
+      "bottom": 0.71,
+      "left": 0.59,
+      "right": 0.40,
+      "header": 0.39,
+      "footer": 0.39
+    }
   },
-
   "i18n": {
-    "locales": ["zh_TW", "en_US", "pt_BR"],
+    "locales": [
+      "zh_TW",
+      "en_US",
+      "pt_BR"
+    ],
     "fallback_locale": "zh_TW",
     "current_locale": "zh_TW",
     "translations": {
@@ -305,7 +475,9 @@
         "material": "材料訂貨期",
         "remark": "備註",
         "dependency": "前置依賴",
-        "today": "今日"
+        "today": "今日",
+        "calendar_day": "日曆天",
+        "workday": "工作天"
       },
       "en_US": {
         "project_name": "Project Name",
@@ -351,7 +523,6 @@
       }
     }
   },
-
   "logging": {
     "level": "INFO",
     "file": "gantt_generator.log",
@@ -360,7 +531,6 @@
     "backup_count": 3,
     "log_errors_only": false
   },
-
   "extensions": {
     "custom_fields": [],
     "plugins": [],

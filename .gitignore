@@ -16,3 +16,6 @@ output/
 *.pdf
 .DS_Store
 Thumbs.db
+
+# Keep the required example data file (needed for docs / quick-start)
+!examples/EDF.example.xlsx

@@ -8,11 +8,13 @@
 
 > **Professional Gantt charts in Excel — no MS Project required.**
 
-Generate beautiful, print-ready construction schedules with pure Python + openpyxl. Dual calendar modes, WBS auto-grouping, milestone markers, dependency arrows, and three-level timescale — everything you'd expect from MS Project, without the license or complexity.
+Generate beautiful, print-ready construction schedules with pure Python + openpyxl.
+Dual calendar modes, WBS auto-grouping, milestone markers, dependency support, and a
+three-level timescale — everything you'd expect from MS Project, without the license or
+complexity.
 
-<p align="center">
-  <img src="demo/demo_preview.png" alt="GanttChart Pro Demo" width="800">
-</p>
+> 💡 See `examples/EDF.example.xlsx` and `scripts/gantt_config.example.json` for ready-to-run
+> sample data — run `gen_gantt.py` to render a real `.xlsx` chart in seconds.
 
 ---
 
@@ -39,97 +41,68 @@ pip install openpyxl
 ### Generate a Chart (one command)
 
 ```bash
-python scripts/gantt_chart_pro.py --input examples/EDF.xlsx --output schedule.xlsx --scheme blue_pro
+cd scripts
+python gen_gantt.py ../scripts/gantt_config.example.json ../output.xlsx
 ```
 
-### From Python
+Or simply drop your own `gantt_config.json` next to `gen_gantt.py` and run:
 
-```python
-from scripts.gantt_chart_pro import GanttGenerator
-
-gen = GanttGenerator(
-    input_file="examples/EDF.xlsx",
-    output_file="schedule.xlsx",
-    color_scheme="blue_pro",
-    calendar_mode="calendar_days"
-)
-gen.generate()
+```bash
+python gen_gantt.py
 ```
 
 ---
 
-## 📊 Features
+## 📦 What's Inside (v16.0)
 
-- 🗓️ **Dual calendar modes** — calendar days or working days
-- 🎨 **Multiple color schemes** — blue_pro, green_calm, gray_minimal
-- 📊 **WBS auto-grouping** — task codes define hierarchy (A=Level 1, A1=Level 2)
-- 🚩 **Milestone markers** — auto-detected or manual
-- 📏 **Weekend highlight** — gray background for non-working days
-- 🔴 **Today line** — red vertical line at current date
-- 🔗 **Dependency arrows** — FS/SS/FF/SF relationships
-- 📐 **Three-level timescale** — year / month / day
-- 🖨️ **Print-ready** — landscape, auto-fit, repeating headers
-
----
-
-## 📋 EDF Data Format
-
-Prepare an Excel file with these columns:
-
-| Column | Required | Description |
-|--------|----------|-------------|
-| **Task ID** | Recommended | A, A1, A2... (auto-infers hierarchy) |
-| **Task Name** | Yes | Description |
-| **Start Date** | Yes | YYYY-MM-DD |
-| **Duration** | No | Days (default: 1) |
-| **End Date** | No | Auto-calculated |
-| **Predecessor** | No | e.g. "A1FS" or "A1" |
-
-See [`examples/EDF.xlsx`](examples/EDF.xlsx) for a working example.
+| File | Role |
+|---|---|
+| `scripts/gen_gantt.py` | **Main rendering engine** — `GanttChart` class, data-driven, zero interaction |
+| `scripts/time_utils.py` | Date series / weekday / month grouping / duration math |
+| `scripts/edf_importer.py` | Config-driven EDF.xlsx → task JSON importer (v3.0) |
+| `scripts/gui_gantt.py` | Optional headless GUI for end-to-end validation |
+| `scripts/a3_print_layout.py` | A3 landscape single-page post-processing |
+| `scripts/config_v2.json` | Color schemes, calendar, i18n, print & validation rules |
+| `scripts/gantt_styles.json` | Column widths, row heights, fonts, borders |
+| `scripts/recognition_config.json` | EDF field-pattern dictionary (extend without code changes) |
+| `scripts/gantt_config.example.json` | Generic sample task data (works out of the box) |
+| `SKILL.md` | Full skill documentation (engine architecture, color schemes, layout spec) |
 
 ---
 
 ## 🎨 Color Schemes
 
-| Scheme | Vibe | Best For |
-|--------|------|----------|
-| `blue_pro` | Professional navy | Client presentations |
-| `green_calm` | Soft green | Internal planning |
-| `gray_minimal` | Clean grayscale | Print/black & white |
+- **`blue_pro`** (default) — navy header/lines, 6-stage gradient bars, coral "today" line
+- **`green_calm`** — natural green, eco/buildings friendly
+- **`gray_minimal`** — grayscale, print-friendly B/W output
 
-Full customization: [`gantt_styles.json`](gantt_styles.json)
+Stage colors (A–E): prep → demolition → fit-out → electrical/AV → install/handover.
 
 ---
 
-## 📊 Real-World Impact
+## 🗓️ Calendar & Granularity
 
-> *"以前出甘特圖要用 MS Project，授權貴、同事開唔到 .mpp。而家 Excel 一開就得，業主、顧問、判頭全部睇到。改圖仲快過 MSP 10 倍。"* — Mike, MEP Project Manager
-
----
-
-## 🇭🇰 中文簡介
-
-純 Python + Excel 甘特圖生成器。支援雙日曆模式、WBS 任務自動分組、里程碑標記、前置任務箭嘴、三層時間軸。唔洗 MS Project，出到專業施工進度圖。
+- **`calendar_days`** (default) — every day a column, weekends shaded
+- **`workdays`** — hide weekends
+- Granularity modes: `auto` / `day` / `week_grouped` / `week` / `compressed` / `month`
+  - `auto`: ≤120d → day, 121–450d → week, >450d → month
 
 ---
 
-## 📖 Documentation
+## 📥 Import from EDF.xlsx
 
-- **Configuration Guide**: [`references/config-guide.md`](references/config-guide.md)
-- **Color Scheme Reference**: [`references/color-schemes.md`](references/color-schemes.md)
+If you already have an Excel schedule in EDF format:
 
----
+```bash
+python edf_importer.py 你的進度表.xlsx --report   # preview what gets extracted
+python gen_gantt.py 你的進度表.xlsx output.xlsx    # gen_gantt auto-detects .xlsx
+```
 
-## 🔗 My Other Tools
-
-| Tool | Description |
-|------|-------------|
-| [**Excel Template Filler**](https://github.com/David-CB666/excel-template-filler) | Dual-engine batch template filling — images & print settings preserved |
-| [**VBA Macro Reader**](https://github.com/David-CB666/VBA-Macro-Reader-v2.0.0) | Read, modify & execute VBA macros from .xlsm files |
-| [**Material Submittal Generator**](https://github.com/David-CB666/material-submittal-generator) | One-click batch submittals + auto BQ page merging |
+All recognition patterns live in `recognition_config.json` — add a new column keyword
+there and the importer understands your format, no code changes needed.
 
 ---
 
 ## 📄 License
 
-MIT © [David-CB666](https://github.com/David-CB666)
+MIT — see `LICENSE`. Free for commercial and personal use.
