@@ -7,7 +7,7 @@
 Generate beautiful, print-ready construction schedules with pure Python + openpyxl. Dual calendar modes, WBS auto-grouping, milestone markers, dependency arrows, and three-level timescale — everything you'd expect from MS Project, without the license or complexity.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://python.org)
 [![openpyxl](https://img.shields.io/badge/openpyxl-3.1+-217346?logo=python&logoColor=white)](https://openpyxl.readthedocs.io)
 [![Stars](https://img.shields.io/github/stars/David-CB666/gantt-chart-pro?style=social)](https://github.com/David-CB666/gantt-chart-pro/stargazers)
 [![Forks](https://img.shields.io/github/forks/David-CB666/gantt-chart-pro?style=social)](https://github.com/David-CB666/gantt-chart-pro/network/members)
@@ -18,14 +18,6 @@ Generate beautiful, print-ready construction schedules with pure Python + openpy
 </div>
 
 ---
-
-<!-- ## 📸 Demo
-
-> Add a screenshot or GIF of the generated Gantt chart here.
-> ![Gantt Chart Demo](demo/demo_preview.png)
->
-> *Generated with `blue_pro` color scheme, calendar_days mode*
--->
 
 ## 🎯 Why GanttChart Pro?
 
@@ -51,24 +43,25 @@ pip install openpyxl
 ### Generate a Chart (one command)
 
 ```bash
-python scripts/gantt_chart_pro.py \
-  --input examples/EDF.xlsx \
-  --output schedule.xlsx \
-  --scheme blue_pro
+# JSON config mode (recommended)
+python scripts/gen_gantt.py scripts/gantt_config.example.json output.xlsx
+
+# EDF Excel import mode
+python scripts/gen_gantt.py examples/EDF.example.xlsx output.xlsx
+
+# GUI mode (interactive panel)
+python scripts/gen_gantt.py
 ```
 
 ### From Python
 
 ```python
-from scripts.gantt_chart_pro import GanttGenerator
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "scripts"))
+from gen_gantt import GanttChart
 
-gen = GanttGenerator(
-    input_file="examples/EDF.xlsx",
-    output_file="schedule.xlsx",
-    color_scheme="blue_pro",
-    calendar_mode="calendar_days"
-)
-gen.generate()
+chart = GanttChart(config_path="scripts/gantt_config.example.json")
+chart.render(output_path="schedule.xlsx")
 ```
 
 ## 📊 Features
@@ -98,7 +91,7 @@ Prepare an Excel file with these columns:
 | **End Date** | No | Auto-calculated |
 | **Predecessor** | No | e.g. "A1FS" or "A1" |
 
-See [`examples/EDF.xlsx`](examples/EDF.xlsx) for a working example.
+See [`examples/EDF.example.xlsx`](examples/EDF.example.xlsx) for a working example.
 
 ## 🎨 Color Schemes
 
@@ -108,7 +101,7 @@ See [`examples/EDF.xlsx`](examples/EDF.xlsx) for a working example.
 | `green_calm` | Soft green | Internal planning |
 | `gray_minimal` | Clean grayscale | Print / black & white |
 
-Full customization: [`gantt_styles.json`](gantt_styles.json)
+Full customization: [`scripts/gantt_styles.json`](scripts/gantt_styles.json)
 
 ## 📖 Documentation
 
