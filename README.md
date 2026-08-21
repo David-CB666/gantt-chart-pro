@@ -19,6 +19,12 @@ Generate beautiful, print-ready construction schedules with pure Python + openpy
 
 ---
 
+## 📸 Demo
+
+![Gantt Chart Demo](demo/gantt_chart_demo.jpg)
+
+*Professional Gantt chart generated in Excel — WBS grouping, milestones, weekend shading, dual calendar*
+
 ## 🎯 Why GanttChart Pro?
 
 **MS Project costs hundreds of dollars, only runs on Windows, and outputs `.mpp` files that nobody else can open. GanttChart Pro generates the same professional Gantt charts directly in Excel — free, cross-platform, and universally shareable.**
