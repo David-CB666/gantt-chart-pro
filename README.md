@@ -138,6 +138,31 @@ Full customization: [`scripts/gantt_styles.json`](scripts/gantt_styles.json)
 - 纯 Python 实现，跨平台运行
 - 内置 3 套配色方案，支持完全自定义
 
+## 📖 Complete Guide
+
+This tool is a practical output from the **AI Agent Cultivation Field Manual v2.0** — a 13-chapter handbook that teaches you how to train AI to handle real engineering documentation workflows.
+
+**The manual covers the full pipeline:**
+
+| Software | Manual Chapter | Efficiency Gain |
+|----------|---------------|-----------------|
+| Word | Ch.6 | 2-3 days → 30 min |
+| **Excel** ← this tool's domain | Ch.7 | 14 hrs → 30 min |
+| PDF | Ch.8 | 200 pages → 40 min |
+| CAD | Ch.9 | 30 min/sheet → minutes/set |
+
+**What you get with the full version:**
+- 13 chapters + 8 appendices (HTML + PDF + EPUB)
+- 7 installable skill packs — plug and play
+- Complete Python case studies (safe_convert, SLD parser, material submittal pipeline)
+- 128 days of real AI cultivation records — pitfalls, rules, breakthroughs
+
+👉 **[Get the full manual →](https://david-cb666.github.io/ai-agent-manual)**
+
+> Free preview: Chapter 1 (5-min AI level self-assessment) available on the landing page.
+
+---
+
 ## 🔗 My Other Tools
 
 | Tool | Description |
